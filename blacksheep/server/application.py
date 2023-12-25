@@ -744,7 +744,8 @@ class Application(BaseApplication):
         ws.route_values = route.values
 
         try:
-            return await route.handler(ws)
+            await route.handler(ws)
+            return
         except Exception as exc:
             logging.exception("Exception while handling WebSocket")
             # If WebSocket connection accepted, close
